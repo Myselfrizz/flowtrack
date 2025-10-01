@@ -112,7 +112,7 @@ class ExpenseSummary extends StatelessWidget {
                 // FIX: Corrected string interpolation to display the currency symbol
                 // followed by the calculated total.
                 Text(
-                  '₹${calculateWeekTotal(value, sunday, monday, tuesday, wednesday, thursday, friday, saturday)}',
+                  '${value.currencySymbol}${calculateWeekTotal(value, sunday, monday, tuesday, wednesday, thursday, friday, saturday)}',
                 ),
               ],
             ),

@@ -8,6 +8,8 @@ class ExpensesData extends ChangeNotifier {
   //list of all expenses
   List<ExpensesItem> OverallExpenseList = [];
 
+   String currencySymbol = '₹';
+
   // get expense list
   List<ExpensesItem> getExpenseList() {
     return OverallExpenseList;

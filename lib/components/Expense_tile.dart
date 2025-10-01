@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:provider/provider.dart'; // Make sure provider is imported
+import '../data/expenses_data.dart';   // Make sure your data class is imported
 
 class ExpenseTile extends StatelessWidget {
   final String name;
@@ -17,17 +19,19 @@ class ExpenseTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // 1. Get the provider data here using context.read()
+    final expensesData = context.read<ExpensesData>();
+
     return Slidable(
       endActionPane: ActionPane(
         motion: const StretchMotion(),
         children: [
-          //delete button
           SlidableAction(
             onPressed: deleteTapped,
-            icon: Icons.delete, // FIX: Added icon
+            icon: Icons.delete,
             backgroundColor: Colors.red,
             borderRadius: BorderRadius.circular(4),
-            label: 'Delete', // FIX: Added a label
+            label: 'Delete',
           ),
         ],
       ),
@@ -36,7 +40,8 @@ class ExpenseTile extends StatelessWidget {
         subtitle: Text(
           '${dateTime.day}/${dateTime.month}/${dateTime.year}',
         ),
-        trailing: Text('₹$amount'), // FIX: Used string interpolation for cleaner code
+        // 2. Use the variable you created
+        trailing: Text('${expensesData.currencySymbol}$amount'),
       ),
     );
   }
