@@ -11,7 +11,7 @@ String convertDateTimeToString(DateTime dateTime) {
   //day in the format dd
     String day = dateTime.day.toString();
     if (day.length == 1) {
-      day = '0$month';
+      day = '0$day';
     }
     //final format yyy/mm/dd
     String yyyymmdd = year+month+day;
